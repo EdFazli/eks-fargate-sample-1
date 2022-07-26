@@ -34,12 +34,12 @@ nodeGroups:
     volumeSize: 80
     volumeType: gp3
     volumeEncrypted: true # using default KMS key
-    # ami: ami-011e9356446270c5b
+    ami: ami-011e9356446270c5b
     amiFamily: Bottlerocket 
     privateNetworking: true
     subnets:
-      - subnet-0ebf54ec1af36bd83 # private az1a
-      - subnet-0387b0636cbaa3fe1 # private az1b
+      - subnet-0695708dd097cb388 # private az1a
+      - subnet-0791caf0bcec0132e # private az1b
     iam:
       attachPolicyARNs:
         - arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy
