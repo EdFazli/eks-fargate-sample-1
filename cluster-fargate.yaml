@@ -57,14 +57,14 @@ nodeGroups:
     
 
 vpc:
-  id: vpc-c8a85aae
+  id: vpc-0d912ff9f6b199e60
   subnets:
     public:
-      ap-southeast-1a: { id: subnet-0ed9ea843d038bc1e }
-      ap-southeast-1b: { id: subnet-0951aeeb59656486e }
+      ap-southeast-1a: { id: subnet-0a592971001f58c6d }
+      ap-southeast-1b: { id: subnet-077861398f5c267da }
     private:
-      ap-southeast-1a: { id: subnet-0ebf54ec1af36bd83 }
-      ap-southeast-1b: { id: subnet-0387b0636cbaa3fe1 }
+      ap-southeast-1a: { id: subnet-0695708dd097cb388 }
+      ap-southeast-1b: { id: subnet-0791caf0bcec0132e }
   clusterEndpoints:
     publicAccess: true
     privateAccess: true
