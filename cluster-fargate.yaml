@@ -1,0 +1,61 @@
+# An example of ClusterConfig with a normal nodegroup and a Fargate profile.
+---
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: eks-fargate-with-alb-ingress-cluster
+  region: ap-southeast-1
+  version: "1.22"
+
+nodeGroups:
+  - name: ng-1
+    instanceType: t4g.small
+    desiredCapacity: 1
+    volumeSize: 80
+    volumeType: gp3
+    amiFamily: Bottlerocket 
+    iam:
+      attachPolicyARNs:
+        - arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy
+        - arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy
+        - arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly
+        - arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore
+    bottlerocket:
+      settings:
+        motd: "Hello from bottlerocket and eksctl"
+vpc:
+  subnets:
+    private:
+      ap-southeast-1a: { id: subnet-0ebf54ec1af36bd83 }
+      ap-southeast-1b: { id: subnet-0387b0636cbaa3fe1 }
+
+secretsEncryption:
+  # ARN of the KMS key
+  keyARN: "arn:aws:kms:ap-southeast-1:056913162044:key/2b838bcc-cdd6-4cf0-b8b4-7ff3d27a573f"
+
+fargateProfiles:
+  - name: fp-default
+    selectors:
+      # All workloads in the "default" Kubernetes namespace will be
+      # scheduled onto Fargate:
+      - namespace: default
+      # All workloads in the "kube-system" Kubernetes namespace will be
+      # scheduled onto Fargate:
+      - namespace: kube-system
+  - name: fp-dev
+    selectors:
+      # All workloads in the "dev" Kubernetes namespace matching the following
+      # label selectors will be scheduled onto Fargate:
+      - namespace: dev
+        labels:
+          env: dev
+          checks: passed
+  - name: fp-uat
+    selectors:
+      # All workloads in the "uat" Kubernetes namespace matching the following
+      # label selectors will be scheduled onto Fargate:
+      - namespace: uat
+        labels:
+          env: uat
+          checks: passed
