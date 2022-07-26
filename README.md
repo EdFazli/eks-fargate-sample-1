@@ -24,3 +24,7 @@ Add --conntrack-max-per-core and --conntrack-min to the kube-proxy arguments lik
         - --config=/var/lib/kube-proxy-config/config
         - --conntrack-max-per-core=0
         - --conntrack-min=0
+
+## Commands
+1- To create cluster using config file
+    `eksctl create cluster -f cluster-fargate.yaml`
