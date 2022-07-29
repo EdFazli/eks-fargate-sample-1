@@ -32,7 +32,7 @@ nodeGroups:
   - name: ng-1
     instanceType: t4g.small
     desiredCapacity: 2
-    #volumeSize: 80
+    volumeSize: 80
     volumeType: gp3
     volumeEncrypted: true # using default KMS key
     #ami: ami-011e9356446270c5b
