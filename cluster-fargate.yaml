@@ -9,7 +9,6 @@ metadata:
   version: "1.22"
 
 iam:
-  fargatePodExecutionRoleARN: arn:aws:iam::056913162044:role/AmazonEKSFargatePodExecutionRole
   withOIDC: true
   serviceAccounts:
   - metadata:
