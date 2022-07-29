@@ -11,11 +11,11 @@ metadata:
 iam:
   withOIDC: true
   serviceAccounts:
-  - metadata:
-      name: aws-load-balancer-controller
-      namespace: kube-system
-    wellKnownPolicies:
-      awsLoadBalancerController: true
+  #- metadata:
+  #    name: aws-load-balancer-controller
+  #    namespace: kube-system
+  #  wellKnownPolicies:
+  #    awsLoadBalancerController: true
   - metadata:
       name: efs-csi-controller-sa
       namespace: kube-system
