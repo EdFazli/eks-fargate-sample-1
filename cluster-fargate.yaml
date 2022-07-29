@@ -11,11 +11,11 @@ metadata:
 iam:
   withOIDC: true
   serviceAccounts:
-  #- metadata:
-  #    name: aws-load-balancer-controller
-  #    namespace: kube-system
-  #  wellKnownPolicies:
-  #    awsLoadBalancerController: true
+  - metadata:
+      name: aws-load-balancer-controller
+      namespace: kube-system
+    wellKnownPolicies:
+      awsLoadBalancerController: true
   - metadata:
       name: efs-csi-controller-sa
       namespace: kube-system
@@ -26,35 +26,6 @@ iam:
       namespace: cert-manager
     wellKnownPolicies:
       certManager: true
-
-nodeGroups:
-  - name: ng-1
-    instanceType: t4g.small
-    desiredCapacity: 2
-    volumeSize: 80
-    volumeType: gp3
-    volumeEncrypted: true # using default KMS key
-    #ami: ami-011e9356446270c5b
-    amiFamily: Bottlerocket 
-    privateNetworking: true
-    subnets:
-      - subnet-0695708dd097cb388 # private az1a
-      - subnet-0791caf0bcec0132e # private az1b
-    iam:
-      attachPolicyARNs:
-        - arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy
-        - arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy
-        - arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly
-        - arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore
-      withAddonPolicies:
-        efs: true
-    bottlerocket:
-      enableAdminContainer: true
-      settings:
-        motd: "Congratulations! You received a hello from bottlerocket and eksctl"
-    labels:
-      nodegroup-type: frontend
-    
 
 vpc:
   id: vpc-0d912ff9f6b199e60
