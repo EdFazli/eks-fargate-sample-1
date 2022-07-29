@@ -14,8 +14,8 @@ iam:
   - metadata:
       name: aws-load-balancer-controller
       namespace: kube-system
-    wellKnownPolicies:
-      awsLoadBalancerController: true
+    attachPolicyARNs:
+    -  "arn:aws:iam::056913162044:policy/AWSLoadBalancerControllerIAMPolicy"
   - metadata:
       name: efs-csi-controller-sa
       namespace: kube-system
