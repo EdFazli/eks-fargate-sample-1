@@ -9,6 +9,7 @@ metadata:
   version: "1.22"
 
 iam:
+  fargatePodExecutionRoleARN: arn:aws:iam::056913162044:role/AmazonEKSFargatePodExecutionRole
   withOIDC: true
   serviceAccounts:
   - metadata:
@@ -31,10 +32,10 @@ nodeGroups:
   - name: ng-1
     instanceType: t4g.small
     desiredCapacity: 2
-    volumeSize: 80
+    #volumeSize: 80
     volumeType: gp3
     volumeEncrypted: true # using default KMS key
-    ami: ami-011e9356446270c5b
+    #ami: ami-011e9356446270c5b
     amiFamily: Bottlerocket 
     privateNetworking: true
     subnets:
