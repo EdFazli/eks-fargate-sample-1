@@ -27,5 +27,11 @@ Add --conntrack-max-per-core and --conntrack-min to the kube-proxy arguments lik
 
 ## Commands
 
-1- To create cluster using config file
+- To get the ALB policy
+    `curl -o iam_policy.json https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.4.2/docs/install/iam_policy.json`
+- To create iam policy via AWS CLI
+    `aws iam create-policy \
+    --policy-name AWSLoadBalancerControllerIAMPolicy \
+    --policy-document file://iam_policy.json`
+- To create cluster using config file
     `eksctl create cluster -f cluster-fargate.yaml`
