@@ -35,3 +35,16 @@ Add --conntrack-max-per-core and --conntrack-min to the kube-proxy arguments lik
     --policy-document file://iam_policy.json`
 - To create cluster using config file
     `eksctl create cluster -f cluster-fargate.yaml`
+- To install AWS Load Balancer using Helm
+  - Add EKS chart repo to Helm
+        `helm repo add eks https;//aws.github.io/eks-charts`
+  - Install TargetGroupBinding custom resource definitions (CRDs)
+        `kubectl apply -k "github.com/aws/eks-charts/stable/aws-load-balancer-controller//crds?ref=master"`
+  - Install Helm chart
+        `helm install aws-load-balancer-controller eks/aws-load-balancer-controller \
+        --set clusterName=eks-fargate-with-alb-ingress-cluster \
+        --set serviceAccount.create=false \
+        --set region=ap-southeast-1 \
+        --set vpcId=vpc-0d912ff9f6b199e60 \
+        --set serviceAccount.name=aws-load-balancer-controller \
+        -n kube-system`
