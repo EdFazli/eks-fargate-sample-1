@@ -16,16 +16,19 @@ iam:
       namespace: kube-system
     attachPolicyARNs:
     -  "arn:aws:iam::056913162044:policy/AWSLoadBalancerControllerIAMPolicy"
+    roleName: AWSEKSLoadBalancerControllerRole
   - metadata:
       name: efs-csi-controller-sa
       namespace: kube-system
     wellKnownPolicies:
       efsCSIController: true
+    roleName: AWSEKSEFSControllerRole
   - metadata:
       name: cert-manager
       namespace: cert-manager
     wellKnownPolicies:
       certManager: true
+    roleName: AWSEKSCMRole
 
 vpc:
   id: vpc-0d912ff9f6b199e60
