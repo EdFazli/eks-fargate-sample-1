@@ -48,6 +48,9 @@ Add --conntrack-max-per-core and --conntrack-min to the kube-proxy arguments lik
         --set vpcId=vpc-0d912ff9f6b199e60 \
         --set serviceAccount.name=aws-load-balancer-controller \
         -n kube-system`
+- To install EFS CSI driver
+    `helm repo add aws-efs-csi-driver  https://kubernetes-sigs.github.io/aws-efs-csi-driver/`
+    `helm install aws-efs-csi-driver aws-efs-csi-driver/aws-efs-csi-driver`
 - To apply deployment and service file
     `kubectl apply -f xxx.yaml`
 - To apply ingress file
