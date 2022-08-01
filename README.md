@@ -48,3 +48,7 @@ Add --conntrack-max-per-core and --conntrack-min to the kube-proxy arguments lik
         --set vpcId=vpc-0d912ff9f6b199e60 \
         --set serviceAccount.name=aws-load-balancer-controller \
         -n kube-system`
+- To apply deployment and service file
+    `kubectl apply -f xxx.yaml`
+- To apply ingress file
+    `kubectl apply -f alb-ingress.yaml`
