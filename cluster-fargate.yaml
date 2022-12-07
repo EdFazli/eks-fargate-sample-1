@@ -29,6 +29,10 @@ iam:
     wellKnownPolicies:
       certManager: true
     roleName: AWSEKSCMRole
+  - metadata:
+      name: adot-collector
+      namespace: observability
+    attachRoleARN: "arn:aws:iam::056913162044:role/CloudWatchAgentServerRole"
 
 vpc:
   id: vpc-0d912ff9f6b199e60
@@ -91,4 +95,6 @@ addons:
   - name: coredns
     version: latest
   - name: kube-proxy
+    version: latest
+  - name: adot
     version: latest
